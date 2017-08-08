@@ -16,10 +16,13 @@
 <body>
 	<h1><a href="index.html">Peeling the Onion</a></h1>
 	<p>The following chart demonstrates how onion prices fared over the years. </p>
+	<div id="g1">
+		<h2>Price trends over the years</h2>
+	</div>
 	<script>
 		var spec1={
 			"$schema":"https://vega.github.io/schema/vega-lite/v2.json",
-			"data":{"url":"data/onion_country avg prices.csv"},
+			"data":{"url":"data/country_prices.csv"},
 			"selection":{
 				"grid":{
 					"type":"interval",
@@ -34,15 +37,15 @@
 					"resolve":"global"
 				}
 			},
-			"width":700,
-			"height":400,
+			"width":1024,
+			"height":300,
 			"padding":{
 				"left": 5, 
 				"top": 5, 
 				"right": 5,
 				"bottom":50
 			},
-			"mark": "bar",
+			"mark": "line",
 			"encoding":{
 				"x":{
 					"field": "date",
@@ -59,11 +62,11 @@
 						"title":"Prices"
 					},
 					"scale":{
-						"domain":[0,5000]
+						"domain":[0,2000]
 					}
 				},
 				"color" :{
-					"field":"Average prices across India",
+					"field":"Avg prices across India",
 					"type": "nominal",
 							}
 			}
