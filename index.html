@@ -2,9 +2,15 @@
 <head>
 	<title> Peeling the Onion </title>
 	<meta charset="utf-8">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.0-rc2/vega.js"></script>
+<!-- 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vega/3.0.0-rc2/vega.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vega-lite/2.0.0-beta.10/vega-lite.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-beta.19/vega-embed.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/vega-embed/3.0.0-beta.19/vega-embed.js"></script> -->
+
+	<script src="lib/vega.min.js"></script>
+	<script src="lib/vega-lite.min.js"></script>
+	<script src="lib/vega-embed.min.js"></script>
+	<script src="lib/vega-tooltip.min.js"></script>
+
 
 	<style media="screen">
 		.vega-actions a {
@@ -17,7 +23,7 @@
 	<h1><a href="index.html">Peeling the Onion</a></h1>
 	<p>The following chart demonstrates how onion prices fared over the years. </p>
 	<div id="g1">
-		<h2>Price trends over the years</h2>
+		<h2>Monthly trends</h2>
 	</div>
 	<script>
 		var spec1={
@@ -45,30 +51,22 @@
 				"right": 5,
 				"bottom":50
 			},
-			"mark": "line",
+			"mark": "circle",
 			"encoding":{
 				"x":{
-					"field": "date",
+					"field": "date", 
 					"type": "temporal",
-					
-					"axis": {
-						"tickCount": 18, "format": "%b %Y", "title":null
-					},
+					"axis": {"tickCount": 18, "format": "%b %Y", "title":null},
 				},
 				"y": {
 					"field": "value",
 					"type": "quantitative",
-					"axis":{
-						"title":"Prices"
-					},
-					"scale":{
-						"domain":[0,2000]
+					"axis":{"title":"Prices"},
+					"scale":{"domain":[0,2000]
 					}
 				},
-				"color" :{
-					"field":"Avg prices across India",
-					"type": "nominal",
-							}
+				"color": {"field":"Avg prices across India", "type": "nominal"},
+				"tooltip": {"field": "value", "type": "quantitative"}
 			}
 				
 		};
